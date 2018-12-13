@@ -50,3 +50,31 @@
 @import "./assets/styles/utilities";
 @import "./assets/styles/demo";
 /* You can add global styles to this file, and also import other style files */
+
+.alert{
+    animation: popup;
+    animation-duration: 0.3s;
+}
+
+@keyframes popup {
+    0%   { transform: scale(0.1); }
+    75%   { transform: scale(1.1); }
+    100%   { transform: scale(1); }
+  }
+.slidedown{
+    animation: slide;
+    animation-duration: 0.3s;
+}
+
+@keyframes slide {
+    0%   { transform: translateY(-10px); opacity: 0; }
+    100%   { transform: translateY(0); opacity: 1; }
+  }
+
+.deactive{
+   cursor: not-allowed;
+   opacity: 0.5; 
+}
+.active{
+    cursor: pointer;
+}

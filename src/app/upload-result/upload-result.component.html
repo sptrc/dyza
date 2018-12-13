@@ -1,0 +1,38 @@
+<div class="col-12 grid-margin">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Upload Result</h4>
+      <form class="form-sample" name="form" #f="ngForm" novalidate>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Extension</label>
+              <div class="col-sm-9">
+                <select name="ext" class="form-control" [(ngModel)]="ext" required>
+                  <option *ngFor="let ex of data.extensions" [value]="ex">{{ex}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">File</label>
+              <div class="col-sm-9">
+                <input type="file" name="file" class="form-control file" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <button type="submit" class="btn btn-success" [disabled]="f.form.pristine||f.form.invalid" (click)="upload()">Upload</button>
+          </div>
+          <div class="col-md-6">
+            <app-alert></app-alert>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

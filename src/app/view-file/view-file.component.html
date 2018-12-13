@@ -1,0 +1,71 @@
+<div class="col-12 grid-margin">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">View File</h4>
+      <form class="form-sample">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Extension</label>
+              <div class="col-sm-9">
+                <select name="ext" class="form-control" [(ngModel)]="ext" #ex="ngModel" required>
+                  <option *ngFor="let ex of data.extensions" [value]="ex">{{ex}}</option>
+                </select>
+              </div>
+            </div>
+            <app-alert></app-alert>
+          </div>
+          <div class="col-md-6">
+            <button type="submit" class="btn btn-block btn-info" [disabled]="ex.pristine" (click)="getFiles()">Get Files</button>
+            <button type="submit" class="btn btn-block btn-primary" [disabled]="!merge" (click)="mergeFiles()">Merge
+              Files</button>
+            <button type="submit" class="btn btn-block btn-success" [disabled]="!mfile" (click)="preproFile()">Preprocess
+              Files</button>
+          </div>
+        </div>
+      </form>
+      <div class="row" *ngIf="!result">
+        <div class="col-md-6" *ngIf="listFiles">
+          <h5>File list <small>(ctrl+click for multiple select)</small></h5>
+          <select class="form-control" [(ngModel)]="files" (change)="selected()" multiple style="height:auto; overflow-y: hidden">
+            <option *ngFor="let l of listFiles" [value]="l.filename">{{l.filename}}</option>
+          </select>
+          <span *ngIf="files.length>0">{{files.length}} file{{(files.length>1)?'s':''}} selected</span>
+        </div>
+        <div class="col-md-6 mt-4" *ngIf="mfile">
+          <h5>Files are merged and available at <small>{{mfile}}</small></h5>
+        </div>
+      </div>
+      <div class="row" *ngIf="result">
+        <div class="col-md-7">
+            <h5>Preprocessed File</h5>
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Type</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let r of result; let i = index">
+                <tr>
+                  <td>{{r.Name}}</td>
+                  <td>{{r.Type}}</td>
+                  <td>
+                    <button class="btn btn-info btn-xs mx-2" (click)="detail(r)">Details</button>
+                    <a class="btn btn-warning btn-xs" routerLink="/classify/{{i}}">Classify</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-md-5 mt-4" *ngIf="inner">
+          <h5>Details</h5>
+          <p *ngFor="let i of inner">{{i}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

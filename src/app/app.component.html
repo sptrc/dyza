@@ -1,4 +1,4 @@
-<div class="container-scroller">
+<div class="container-scroller" *ngIf="!loginPage">
   <app-navbar></app-navbar>
   <div class="container-fluid page-body-wrapper">
     <app-sidebar></app-sidebar>
@@ -10,3 +10,10 @@
     </div>
   </div>
 </div>
+
+    <div class="d-block" style="height: 41em;" *ngIf="loginPage">
+      <div class="content-wrapper" style="height:91%">
+        <router-outlet></router-outlet>
+      </div>
+      <app-footer></app-footer>
+    </div>

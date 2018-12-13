@@ -1,0 +1,20 @@
+<div class="alert alert-{{data.state}}" role="alert" *ngIf="data.cat=='alert'">
+  {{data.msg}}
+</div>
+
+<div class="card card-inverse-{{data.state}} mb-2" *ngIf="data.cat=='confirm'">
+  <div class="card-body">
+    <p class="mb-4">
+      {{data.msg}} <br>
+      You have {{data.alertTime}} seconds to cancel.
+    </p>
+    
+    <!-- <button class="btn btn-secondary">Ok</button> -->
+    <button class="btn btn-light" (click)="data.clear()">Cancel</button>
+  </div>
+</div>
+
+<div class="alert alert-fill-{{data.state}}" role="alert" *ngIf="data.cat=='fill'">
+  <i class="mdi mdi-alert-circle"></i>
+  {{data.msg}}
+</div>

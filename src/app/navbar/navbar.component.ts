@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
+import { CoreDataService } from '../core-data.service';
 
 @Component({
   selector: 'app-navbar',
@@ -18,7 +19,7 @@ export class NavbarComponent implements OnInit {
       document.querySelector('.sidebar-offcanvas').classList.remove('active');
     }
   }
-  constructor(config: NgbDropdownConfig) {
+  constructor(config: NgbDropdownConfig, public data:CoreDataService) {
     config.placement = 'bottom-right';
   }
   ngOnInit() {

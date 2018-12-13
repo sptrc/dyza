@@ -1,0 +1,204 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">Manage Company</h4>
+    <form class="form-sample" name="form" #f="ngForm" novalidate>
+      <p class="card-description">
+        Company Info
+      </p>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Company Name</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" [(ngModel)]="com.name" name="a" required />
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Parent Company Name</label>
+            <div class="col-sm-9">
+              <select name="a1" class="form-control" [(ngModel)]="com.parent">
+                <option value="0">Self</option>
+                <option *ngFor="let c of data.companyList" [value]="c.id">{{c.name}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="card-description">
+        Company Address
+      </p>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">House No</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" [(ngModel)]="com.house" name="b" />
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Street Name</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" [(ngModel)]="com.street" name="c" />
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Country</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" [(ngModel)]="com.country" name="c1" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">State</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" [(ngModel)]="com.state" name="d" />
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">City</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" [(ngModel)]="com.city" name="e" />
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Pincode</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" [(ngModel)]="com.pincode" name="e1" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Phone Number</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" [(ngModel)]="com.phone" name="f" />
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Email</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" [(ngModel)]="com.email" name="g" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Billing Frequency</label>
+            <div class="col-sm-3">
+              <div class="form-radio">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" id="membershipRadios11" [(ngModel)]="com.payday" value="7" name="h" >
+                  7 Days
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-radio">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" id="membershipRadios12" [(ngModel)]="com.payday" value="15" name="h" >
+                  15 Days
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-radio">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" id="membershipRadios13" [(ngModel)]="com.payday" value="30" name="h" >
+                  30 Days
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Activation Status</label>
+            <div class="col-sm-3">
+              <div class="form-radio">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios1" [(ngModel)]="com.status" value="active" name="i">
+                  Active
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-radio">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios2" [(ngModel)]="com.status" value="dormant" name="i">
+                  Dormant
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-3">
+              <div class="form-radio">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios2" [(ngModel)]="com.status" value="suspend" name="i">
+                  Suspend
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Payment Info</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" [(ngModel)]="com.paymentinfo" name="j" required />
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Payment Method</label>
+            <div class="col-sm-9">
+              <select name="k" class="form-control" [(ngModel)]="com.paymethod">
+                <option value="pay_go">Pay and Go</option>
+                <option value="pay_as_go">Pay as you Go</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+
+      <div class="row">
+        <app-alert></app-alert>
+      </div>
+
+      <div class="row">
+        <button type="submit" class="btn btn-success mr-2" *ngIf="mode=='add'" [disabled]="f.form.pristine&&f.form.invalid" (click)="create()">Create</button>
+        <button type="submit" class="btn btn-info mr-2" *ngIf="mode=='update'" (click)="update()">Update</button>
+        <!-- <button type="submit" class="btn btn-danger mr-2" *ngIf="mode=='update'" (click)="delete()">Delete</button> -->
+        <button type="reset" class="btn btn-light" *ngIf="mode=='add'">Reset</button>
+      </div>
+    </form>
+  </div>
+</div>

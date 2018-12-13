@@ -1,0 +1,34 @@
+<div class="col-12 grid-margin">
+  <div class="card">
+    <div class="card-body">
+      <h4 class="card-title">Predicted File</h4>
+      <form class="form-sample" name="form" #f="ngForm" novalidate>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Extension</label>
+              <div class="col-sm-9">
+                <select name="ext" [(ngModel)]="ext" class="form-control" required>
+                  <option *ngFor="let ex of data.extensions" [value]="ex">{{ex}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <button type="submit" class="btn btn-block btn-info" [disabled]="f.form.pristine||f.form.invalid" (click)="get()">Get Files</button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <app-alert></app-alert>
+          </div>
+          <div class="col-md-12">
+            <ul>
+              <li *ngFor="let r of result">{{r}}</li>
+            </ul>
+          </div>
+        </div>
+        </form>
+        </div>
+        </div>
+        </div>

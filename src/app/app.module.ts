@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from '@angular/common/http';
+import { RecaptchaModule } from 'ng-recaptcha';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -26,6 +28,18 @@ import { DropdownComponent } from './dropdown/dropdown.component';
 import { TooltipsComponent } from './tooltips/tooltips.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { TabsComponent } from './tabs/tabs.component';
+import { LoginComponent } from './login/login.component';
+import { UserComponent } from './user/user.component';
+import { AlertComponent } from './alert/alert.component';
+import { CompanyComponent } from './company/company.component';
+import { UploadFileComponent } from './upload-file/upload-file.component';
+import { ViewFileComponent } from './view-file/view-file.component';
+import { UploadResultComponent } from './upload-result/upload-result.component';
+import { PredictedFilesComponent } from './predicted-files/predicted-files.component';
+import { ClusteringComponent } from './clustering/clustering.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { ClassifyComponent } from './classify/classify.component';
+import { ForgotPassComponent } from './forgot-pass/forgot-pass.component';
 
 @NgModule({
   declarations: [
@@ -48,16 +62,29 @@ import { TabsComponent } from './tabs/tabs.component';
     DropdownComponent,
     TooltipsComponent,
     CarouselComponent,
-    TabsComponent
+    TabsComponent,
+    LoginComponent,
+    UserComponent,
+    AlertComponent,
+    CompanyComponent,
+    UploadFileComponent,
+    ViewFileComponent,
+    UploadResultComponent,
+    PredictedFilesComponent,
+    ClusteringComponent,
+    ClassifyComponent,
+    ForgotPassComponent
   ],
   imports: [
     BrowserModule,
     RouterModule,
+    HttpClientModule,
     AppRoutingModule,
     FormsModule,
+    RecaptchaModule,
     NgbModule.forRoot()
   ],
-  providers: [],
+  providers: [AlertComponent,{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

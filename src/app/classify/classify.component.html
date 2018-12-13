@@ -1,0 +1,53 @@
+<div class="col-12 grid-margin">
+  <div class="row">
+    <div class="col-md-5">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Classify - Column ID: {{id}}</h4>
+          <ul class="list-unstyled h6">
+            <li *ngFor="let k of algo | keyvalue; let i=index" (click)="sub[i]=!sub[i]">
+              <i class="menu-icon mdi mdi-folder"></i>
+              {{k.key|titlecase}}
+              <ul class="list-unstyled slidedown h6 ml-4" *ngIf="sub[i]">
+                <li *ngFor="let ky of k.value | keyvalue" [class]="match(ky.key)" (click)="perform(ky.key)">
+                  <i class="menu-icon mdi mdi-file"></i>
+                  {{ky.key}}
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <div class="card slidedown" *ngIf="this.algorithm == 'DecisionTable'">
+        <div class="card-body">
+          <div class="form-group row">
+            <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Test File</label>
+            <div class="col-sm-9">
+              <input type="file" class="form-control" id="testfile" accept=".arff">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-success mr-2 float-right" [disabled]="!algorithm" (click)="result()">Upload</button>
+        </div>
+      </div>
+      <div class="container p-2 bg-white mt-2">
+          <button type="button" class="btn btn-primary btn-fw btn-sm float-right" *ngIf="algorithm" (click)="download()">
+              <i class="mdi mdi-floppy"></i> Save
+          </button>
+        <h5 class="pt-4">{{algorithm}}</h5>
+        <div id="main">
+        <pre *ngIf="msg" [innerHTML]="msg" class="p-0"></pre>
+        <pre class="p-0">
+        <ul class="list-unstyled" *ngIf="resultset">
+          <li *ngFor="let r of resultset ; let i=index ">
+                <span *ngFor="let r1 of r | keyvalue">
+                  {{r1.key|titlecase}} : {{r1.value}}
+                </span>
+          </li>
+        </ul>
+      </pre>
+    </div>
+      </div>
+    </div>
+  </div>

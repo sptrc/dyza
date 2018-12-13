@@ -1,0 +1,205 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">Manage User</h4>
+    <form class="form-sample" name="form" #f="ngForm" novalidate>
+      <p class="card-description">
+        User info
+      </p>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Userid</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" [(ngModel)]="user.userid" name="a" required />
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-sm-3 col-form-label">Company Name</label>
+              <div class="col-sm-9">
+                <select name="a1" class="form-control" [(ngModel)]="user.company">
+                  <option *ngFor="let c of data.companyList" [value]="c.id">{{c.name}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Role</label>
+            <div class="col-sm-9">
+              <select class="form-control" [(ngModel)]="user.role" name="b">
+                <option *ngFor="let r of data.roles" [value]="r">{{r|titlecase}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Type</label>
+            <div class="col-sm-9">
+              <select class="form-control" [(ngModel)]="user.type" name="c" >
+              <option *ngFor="let t of data.types" [value]="t">{{t|titlecase}}</option>  
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Email</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" [(ngModel)]="user.email" name="d" />
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Phone Number</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" [(ngModel)]="user.phone" name="e" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Employee</label>
+            <div class="col-sm-9">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="defaultCheck1" [(ngModel)]="user.emp" name="f">
+                <label class="form-check-label" for="defaultCheck1">
+                  Yes
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6" *ngIf="user.emp">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Employee ID</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" [(ngModel)]="user.empid" name="g" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Activation Status</label>
+            <div class="col-sm-4">
+              <div class="form-radio">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios1" [(ngModel)]="user.status" value="active" name="h" checked>
+                  Active
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-5">
+              <div class="form-radio">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios2" [(ngModel)]="user.status" value="suspended" name="h">
+                  Suspended
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="card-description my-2">
+        Settings
+      </p>
+      <div class="row">
+        <div class="col-md-6 d-block">
+          <div class="form-group row">
+            <div class="col-sm-9">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="defaultCheck11" [(ngModel)]="user.trail" name="j">
+                <label class="form-check-label" for="defaultCheck11">
+                  Audit Traling
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 d-block">
+          <div class="form-group row">
+            <div class="col-sm-9">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="defaultCheck2" [(ngModel)]="user.invert" name="k">
+                <label class="form-check-label" for="defaultCheck2">
+                  Go Green (Invert Background)
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 d-block">
+          <div class="form-group row">
+            <div class="col-sm-9">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="defaultCheck3" [(ngModel)]="user.logoff10min" name="l">
+                <label class="form-check-label" for="defaultCheck3">
+                  Log off after 10 mins idle
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 d-block">
+          <div class="form-group row">
+            <div class="col-sm-9">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="defaultCheck4" [(ngModel)]="user.autologoff" name="m">
+                <label class="form-check-label" for="defaultCheck4">
+                  Turn off auto log off
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 d-block">
+          <div class="form-group row">
+            <div class="col-sm-9">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="defaultCheck5" [(ngModel)]="user.notificationoff" name="n">
+                <label class="form-check-label" for="defaultCheck5">
+                  Turn off email notification
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <app-alert></app-alert>
+      </div>
+
+      <div class="row">
+        <button type="submit" class="btn btn-success mr-2" *ngIf="mode=='add'" (click)="create()">Create</button>
+        <button type="submit" class="btn btn-info mr-2" *ngIf="mode=='update'" (click)="update()">Update</button>
+        <button type="submit" class="btn btn-danger mr-2" *ngIf="mode=='update'" (click)="delete()">Delete</button>
+        <button type="reset" class="btn btn-light" *ngIf="mode=='add'">Reset</button>
+      </div>
+    </form>
+  </div>
+</div>
